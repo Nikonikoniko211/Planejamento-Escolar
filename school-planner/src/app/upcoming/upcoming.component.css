@@ -1,0 +1,54 @@
+:host {
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+ul:last-child {
+  margin-bottom: 0;
+}
+
+.item {
+  --c: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--c) 35%, var(--border));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--c) 7%, transparent);
+}
+
+.item.Test       { --c: var(--test); }
+.item.Assignment { --c: var(--assignment); }
+.item.Event      { --c: var(--event); }
+.item.DayOff     { --c: var(--dayoff); }
+
+.when {
+  color: var(--muted);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.when.overdue,
+.overdue-title {
+  color: var(--test);
+}
+
+.overdue-title {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+}

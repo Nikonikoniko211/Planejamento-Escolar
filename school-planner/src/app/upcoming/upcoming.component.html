@@ -1,0 +1,26 @@
+<h2>Coming up</h2>
+
+@if (overdue.length) {
+  <h3 class="overdue-title">Overdue</h3>
+  <ul>
+    @for (item of overdue; track item.entry.id) {
+      <li class="item" [class]="item.entry.type">
+        <strong>{{ item.entry.title }}</strong>
+        <span class="when overdue">{{ item.label }}</span>
+      </li>
+    }
+  </ul>
+}
+
+@if (upcoming.length) {
+  <ul>
+    @for (item of upcoming; track item.entry.id) {
+      <li class="item" [class]="item.entry.type">
+        <strong>{{ item.entry.title }}</strong>
+        <span class="when">{{ item.label }} · {{ item.entry.date | date:'EEE, MMM d' }}</span>
+      </li>
+    }
+  </ul>
+} @else {
+  <p>Nothing in the next {{ days }} days.</p>
+}

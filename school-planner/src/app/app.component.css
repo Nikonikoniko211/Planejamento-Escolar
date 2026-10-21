@@ -1,0 +1,124 @@
+:host {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.topbar h1 {
+  font-size: 1.35rem;
+}
+
+.today {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Phone: one column. Order is upcoming, calendar, form, list. */
+.layout {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'upcoming'
+    'calendar'
+    'form'
+    'list';
+}
+
+.upcoming-card { grid-area: upcoming; }
+.calendar-card { grid-area: calendar; }
+.form-card     { grid-area: form; }
+.list-card     { grid-area: list; }
+
+/* PC: sidebar on the left, calendar on the right */
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: 340px minmax(0, 1fr);
+    grid-template-areas:
+      'upcoming calendar'
+      'form     calendar'
+      'list     list';
+    align-items: start;
+  }
+}
+
+form {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+li {
+  --c: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--c) 35%, var(--border));
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+
+li.Test       { --c: var(--test); }
+li.Assignment { --c: var(--assignment); }
+li.Event      { --c: var(--event); }
+li.DayOff     { --c: var(--dayoff); }
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.type {
+  color: var(--c);
+}
+
+li.done .info {
+  opacity: 0.45;
+  text-decoration: line-through;
+}
+
+.ghost {
+  border-color: transparent;
+  color: var(--muted);
+  padding: 0.3rem 0.55rem;
+}
+
+.ghost:hover {
+  color: var(--test);
+  border-color: var(--border-strong);
+}
+
+.empty {
+  margin: 0;
+  color: var(--muted);
+}

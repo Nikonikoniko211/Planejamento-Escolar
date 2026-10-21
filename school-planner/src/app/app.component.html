@@ -1,0 +1,56 @@
+<header class="topbar">
+  <h1>School Planner</h1>
+  <span class="today">{{ today | date:'EEEE, MMMM d' }}</span>
+</header>
+
+<main class="layout">
+  <section class="card upcoming-card">
+    <app-upcoming [entries]="entries" />
+  </section>
+
+  <section class="card calendar-card">
+    <app-calendar [entries]="entries" (dayClicked)="pickDay($event)" />
+  </section>
+
+  <section class="card form-card">
+    <h2>New entry</h2>
+    <form (ngSubmit)="add()">
+      <input #titleInput name="title" [(ngModel)]="newEntry.title" placeholder="Title" required>
+
+      <div class="row">
+        <select name="type" [(ngModel)]="newEntry.type">
+          @for (t of types; track t) {
+            <option [value]="t">{{ t }}</option>
+          }
+        </select>
+        <input name="date" type="date" [(ngModel)]="newEntry.date" required>
+      </div>
+
+      <input name="subject" [(ngModel)]="newEntry.subject" placeholder="Subject (optional)">
+      <button class="primary" type="submit">Add entry</button>
+    </form>
+  </section>
+
+  <section class="card list-card">
+    <h2>All entries</h2>
+
+    @if (entries.length) {
+      <ul>
+        @for (entry of entries; track entry.id) {
+          <li [class]="entry.type" [class.done]="entry.isDone">
+            <input type="checkbox" [checked]="entry.isDone" (change)="toggleDone(entry)" aria-label="Done">
+            <div class="info">
+              <strong>{{ entry.title }}</strong>
+              <span class="meta">
+                <span class="type">{{ entry.type }}</span> · {{ entry.date | date:'mediumDate' }}@if (entry.subject) { · {{ entry.subject }} }
+              </span>
+            </div>
+            <button class="ghost" (click)="remove(entry)" aria-label="Delete entry">✕</button>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="empty">No entries yet. Click a day on the calendar to add one.</p>
+    }
+  </section>
+</main>

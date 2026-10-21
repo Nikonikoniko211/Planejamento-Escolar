@@ -1,0 +1,25 @@
+<div class="header">
+  <h2>{{ viewDate | date:'MMMM y' }}</h2>
+  <button (click)="goToday()">Today</button>
+  <button class="icon" (click)="prev()" aria-label="Previous month">‹</button>
+  <button class="icon" (click)="next()" aria-label="Next month">›</button>
+</div>
+
+<div class="grid">
+  @for (name of weekdays; track name) {
+    <div class="weekday">{{ name }}</div>
+  }
+
+  @for (week of weeks; track $index) {
+    @for (day of week; track day.date.getTime()) {
+      <div class="day" [class.other]="!day.inMonth" [class.today]="day.isToday" (click)="select(day)">
+        <span class="num">{{ day.date.getDate() }}</span>
+        @for (e of day.entries; track e.id) {
+          <div class="chip" [class]="e.type" [class.done]="e.isDone" [title]="e.title">
+            {{ e.title }}
+          </div>
+        }
+      </div>
+    }
+  }
+</div>
