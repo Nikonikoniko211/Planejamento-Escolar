@@ -1,7 +1,8 @@
 # Planejamento Escolar
 
 O Planejamento Escolar é um aplicativo web para organizar tarefas escolares e datas importantes. Cadastre provas, trabalhos, eventos ou dias livres, visualize-os em um calendário, marque atividades como concluídas e acompanhe os próximos compromissos.
-<img width="1204" height="908" alt="image" src="https://github.com/user-attachments/assets/42a786bb-e95e-465f-b59e-caaf1c93f472" />
+<img width="1217" height="899" alt="image" src="https://github.com/user-attachments/assets/5f98503e-25bd-4534-a519-2b7855008a2c" />
+
 
 ## Funcionalidades
 
