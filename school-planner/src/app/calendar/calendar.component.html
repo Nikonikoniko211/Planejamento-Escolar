@@ -1,8 +1,8 @@
 <div class="header">
-  <h2>{{ viewDate | date:'MMMM y' }}</h2>
-  <button (click)="goToday()">Today</button>
-  <button class="icon" (click)="prev()" aria-label="Previous month">‹</button>
-  <button class="icon" (click)="next()" aria-label="Next month">›</button>
+  <h2>{{ viewDate | date:"MMMM 'de' y" }}</h2>
+  <button (click)="goToday()">Hoje</button>
+  <button class="icon" (click)="prev()" aria-label="Mês anterior">‹</button>
+  <button class="icon" (click)="next()" aria-label="Próximo mês">›</button>
 </div>
 
 <div class="grid">

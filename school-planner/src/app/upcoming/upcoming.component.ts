@@ -46,9 +46,12 @@ export class UpcomingComponent implements OnChanges {
   }
 
   private label(diff: number): string {
-    if (diff < 0) return `${-diff} day${diff === -1 ? '' : 's'} overdue`;
-    if (diff === 0) return 'Today';
-    if (diff === 1) return 'Tomorrow';
-    return `in ${diff} days`;
+    if (diff < 0) {
+      const days = -diff;
+      return `${days} ${days === 1 ? 'dia' : 'dias'} em atraso`;
+    }
+    if (diff === 0) return 'Hoje';
+    if (diff === 1) return 'Amanhã';
+    return `em ${diff} dias`;
   }
 }

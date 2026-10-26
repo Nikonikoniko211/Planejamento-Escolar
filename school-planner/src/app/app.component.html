@@ -1,6 +1,6 @@
 <header class="topbar">
-  <h1>School Planner</h1>
-  <span class="today">{{ today | date:'EEEE, MMMM d' }}</span>
+  <h1>Planejamento Escolar</h1>
+  <span class="today">{{ today | date:"EEEE, d 'de' MMMM" }}</span>
 </header>
 
 <main class="layout">
@@ -13,44 +13,44 @@
   </section>
 
   <section class="card form-card">
-    <h2>New entry</h2>
+    <h2>Nova atividade</h2>
     <form (ngSubmit)="add()">
-      <input #titleInput name="title" [(ngModel)]="newEntry.title" placeholder="Title" required>
+      <input #titleInput name="title" [(ngModel)]="newEntry.title" placeholder="Título" required>
 
       <div class="row">
         <select name="type" [(ngModel)]="newEntry.type">
           @for (t of types; track t) {
-            <option [value]="t">{{ t }}</option>
+            <option [value]="t">{{ typeLabel(t) }}</option>
           }
         </select>
         <input name="date" type="date" [(ngModel)]="newEntry.date" required>
       </div>
 
-      <input name="subject" [(ngModel)]="newEntry.subject" placeholder="Subject (optional)">
-      <button class="primary" type="submit">Add entry</button>
+      <input name="subject" [(ngModel)]="newEntry.subject" placeholder="Matéria (opcional)">
+      <button class="primary" type="submit">Adicionar atividade</button>
     </form>
   </section>
 
   <section class="card list-card">
-    <h2>All entries</h2>
+    <h2>Todas as atividades</h2>
 
     @if (entries.length) {
       <ul>
         @for (entry of entries; track entry.id) {
           <li [class]="entry.type" [class.done]="entry.isDone">
-            <input type="checkbox" [checked]="entry.isDone" (change)="toggleDone(entry)" aria-label="Done">
+            <input type="checkbox" [checked]="entry.isDone" (change)="toggleDone(entry)" aria-label="Marcar como concluída">
             <div class="info">
               <strong>{{ entry.title }}</strong>
               <span class="meta">
-                <span class="type">{{ entry.type }}</span> · {{ entry.date | date:'mediumDate' }}@if (entry.subject) { · {{ entry.subject }} }
+                <span class="type">{{ typeLabel(entry.type) }}</span> · {{ entry.date | date:'mediumDate' }}@if (entry.subject) { · {{ entry.subject }} }
               </span>
             </div>
-            <button class="ghost" (click)="remove(entry)" aria-label="Delete entry">✕</button>
+            <button class="ghost" (click)="remove(entry)" aria-label="Excluir atividade">✕</button>
           </li>
         }
       </ul>
     } @else {
-      <p class="empty">No entries yet. Click a day on the calendar to add one.</p>
+      <p class="empty">Ainda não há atividades. Selecione um dia no calendário para adicionar uma.</p>
     }
   </section>
 </main>

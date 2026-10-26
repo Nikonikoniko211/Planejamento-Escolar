@@ -1,10 +1,16 @@
 import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 import { AppComponent } from './app.component';
+import { EntryService } from './entry.service';
 
 describe('AppComponent', () => {
+  const entryService = jasmine.createSpyObj('EntryService', ['getEntries', 'addEntry', 'updateEntry', 'deleteEntry']);
+
   beforeEach(async () => {
+    entryService.getEntries.and.returnValue(of([]));
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [{ provide: EntryService, useValue: entryService }]
     }).compileComponents();
   });
 
@@ -14,16 +20,12 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'school-planner' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('school-planner');
-  });
-
-  it('should render title', () => {
+  it('should render Portuguese application content', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, school-planner');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Planejamento Escolar');
+    expect(compiled.textContent).toContain('Nova atividade');
+    expect(compiled.textContent).toContain('Todas as atividades');
   });
 });

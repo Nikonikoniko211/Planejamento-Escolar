@@ -1,7 +1,7 @@
-<h2>Coming up</h2>
+<h2>Próximas atividades</h2>
 
 @if (overdue.length) {
-  <h3 class="overdue-title">Overdue</h3>
+  <h3 class="overdue-title">Atrasadas</h3>
   <ul>
     @for (item of overdue; track item.entry.id) {
       <li class="item" [class]="item.entry.type">
@@ -17,10 +17,10 @@
     @for (item of upcoming; track item.entry.id) {
       <li class="item" [class]="item.entry.type">
         <strong>{{ item.entry.title }}</strong>
-        <span class="when">{{ item.label }} · {{ item.entry.date | date:'EEE, MMM d' }}</span>
+        <span class="when">{{ item.label }} · {{ item.entry.date | date:"EEE, d 'de' MMM" }}</span>
       </li>
     }
   </ul>
 } @else {
-  <p>Nothing in the next {{ days }} days.</p>
+  <p>Nenhuma atividade nos próximos {{ days }} dias.</p>
 }

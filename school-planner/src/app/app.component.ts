@@ -1,7 +1,7 @@
 import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Entry, EntryService, EntryType } from './entry.service';
+import { ENTRY_TYPE_LABELS, Entry, EntryService, EntryType } from './entry.service';
 import { CalendarComponent } from './calendar/calendar.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
 
@@ -47,6 +47,10 @@ export class AppComponent implements OnInit {
   toggleDone(entry: Entry) {
     this.entryService.updateEntry({ ...entry, isDone: !entry.isDone })
       .subscribe(() => this.load());
+  }
+
+  typeLabel(type: EntryType): string {
+    return ENTRY_TYPE_LABELS[type];
   }
 
   pickDay(date: Date) {

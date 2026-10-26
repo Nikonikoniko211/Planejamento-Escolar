@@ -1,4 +1,4 @@
-# Frontend do School Planner
+# Frontend do Planejamento Escolar
 
 Esta pasta contém o aplicativo web em Angular. Para consultar os requisitos, as instruções de configuração e os comandos para executar o aplicativo completo com a API e o MongoDB, veja o [README do projeto](../README.md).
 

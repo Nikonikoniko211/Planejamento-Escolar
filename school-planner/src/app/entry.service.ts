@@ -4,6 +4,13 @@ import { Observable } from 'rxjs';
 
 export type EntryType = 'Test' | 'Assignment' | 'Event' | 'DayOff';
 
+export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
+  Test: 'Prova',
+  Assignment: 'Trabalho',
+  Event: 'Evento',
+  DayOff: 'Dia livre'
+};
+
 export interface Entry {
   id?: string;
   title: string;

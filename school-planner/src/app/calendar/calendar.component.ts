@@ -21,7 +21,7 @@ export class CalendarComponent implements OnChanges {
   
   viewDate = new Date();
   weeks: Day[][] = [];
-  weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  weekdays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 
   ngOnChanges() {
     this.build();
