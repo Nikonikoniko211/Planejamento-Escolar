@@ -1,6 +1,7 @@
 # School Planner
 
 O School Planner é um aplicativo web para organizar tarefas escolares e datas importantes. Cadastre provas, trabalhos, eventos ou dias livres, visualize-os em um calendário, marque atividades como concluídas e acompanhe os próximos compromissos.
+<img width="1204" height="908" alt="image" src="https://github.com/user-attachments/assets/42a786bb-e95e-465f-b59e-caaf1c93f472" />
 
 ## Funcionalidades
 
